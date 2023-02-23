@@ -18,6 +18,7 @@ server.use((request, response, next) => {
     if (request.method.toLowerCase() !== HTTP_METHOD_GET) {
 
         response.setHeader('Access-Control-Allow-Origin', '*')
+        response.setHeader('Access-Control-Allow-Methods', '*')
         response.setHeader('Access-Control-Allow-Headers', '*')
 
         const token = request.headers['x-api-key'] || ''
