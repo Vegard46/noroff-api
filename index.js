@@ -17,6 +17,10 @@ server.use((request, response, next) => {
 
     if (request.method.toLowerCase() !== HTTP_METHOD_GET) {
 
+        response.setHeader('Access-Control-Allow-Origin', '*')
+        response.setHeader('Access-Control-Allow-Headers', '*')
+        next()
+
         const token = request.headers['x-api-key'] || ''
 
         if (!token) {
@@ -34,12 +38,6 @@ server.use((request, response, next) => {
 
     next()
 })
-
-server.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*')
-    res.header('Access-Control-Allow-Headers', '*')
-    next()
-  })
 
 server.use(router)
 
