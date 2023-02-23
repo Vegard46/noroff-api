@@ -2,7 +2,7 @@
 const jsonServer = require('json-server')
 const server = jsonServer.create()
 const router = jsonServer.router('db.json')
-const middlewares = jsonServer.defaults()
+const middlewares = jsonServer.defaults({noCors: true})
 const {PORT = 3000} = process.env
 if (process.env.NODE_ENV !== 'PRODUCTION') {
     require('dotenv').config()
