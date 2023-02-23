@@ -10,6 +10,7 @@ if (process.env.NODE_ENV !== 'PRODUCTION') {
 
 
 const HTTP_METHOD_GET = 'get'
+const HTTP_METHOD_OPTIONS = 'options'
 
 server.use(middlewares)
 
@@ -19,7 +20,7 @@ server.use((request, response, next) => {
     response.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
     response.setHeader('Access-Control-Allow-Headers', '*')
 
-    if (request.method.toLowerCase() !== HTTP_METHOD_GET) {
+    if (request.method.toLowerCase() !== HTTP_METHOD_GET && request.method.toLowerCase() !== HTTP_METHOD_OPTIONS) {
 
         const token = request.headers['x-api-key'] || ''
 
