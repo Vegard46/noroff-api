@@ -15,11 +15,11 @@ server.use(middlewares)
 
 server.use((request, response, next) => {
 
-    if (request.method.toLowerCase() !== HTTP_METHOD_GET) {
+    response.setHeader('Access-Control-Allow-Origin', '*')
+    response.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+    response.setHeader('Access-Control-Allow-Headers', '*')
 
-        response.setHeader('Access-Control-Allow-Origin', '*')
-        response.setHeader('Access-Control-Allow-Methods', '*')
-        response.setHeader('Access-Control-Allow-Headers', '*')
+    if (request.method.toLowerCase() !== HTTP_METHOD_GET) {
 
         const token = request.headers['x-api-key'] || ''
 
