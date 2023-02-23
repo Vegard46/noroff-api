@@ -19,7 +19,6 @@ server.use((request, response, next) => {
 
         response.setHeader('Access-Control-Allow-Origin', '*')
         response.setHeader('Access-Control-Allow-Headers', '*')
-        next()
 
         const token = request.headers['x-api-key'] || ''
 
