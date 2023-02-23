@@ -35,6 +35,12 @@ server.use((request, response, next) => {
     next()
 })
 
+server.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*')
+    res.header('Access-Control-Allow-Headers', '*')
+    next()
+  })
+
 server.use(router)
 
 server.listen(PORT, () => {
